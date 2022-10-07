@@ -9,6 +9,9 @@ using namespace std;
 #define n 20
 char A[n], B[n];
 
+
+
+
 int number(char a)
 {
 	if (a < 58)
@@ -17,24 +20,29 @@ int number(char a)
 		return a - 'A' + 10;
 } // перевод символа в число
 
-char symbol(int a)
+
+
+char symbol(int a) 
 {
 	if (a < 10)
 		return a + 48;
 	else
 		return a + 55;
-}
+} // если символ - буква (10+ система счисления)
+
+
 
 float ofRin10(char A[n], int r)  // перевод из r-ичной в 10-ную
 {
 	int k = 1, j = 0;
 	float N = 0;
-	while (A[k] != '\0')
+	while (A[k] != '\0') // пока не конец строки
 	{
 		if (A[k] == '.')
-			break;
+			break; 
 		k++;
 	}
+
 	for (int i = k - 1; i >= 0; i--) // посчитали целую часть
 		N += (number(A[j++])) * powf(r, i);
 
@@ -44,6 +52,8 @@ float ofRin10(char A[n], int r)  // перевод из r-ичной в 10-ну�
 		N += (number(A[j])) * powf(r, k--);
 	return N;
 }
+
+
 
 char* of10inR(float N, int r)
 {
@@ -56,10 +66,10 @@ char* of10inR(float N, int r)
 		N2 = N2 - (H * r);
 		A[i++] = symbol(N2);
 		N2 = H;
-	} // Целая чать переведена в r-ичную СС, далее перевод дробной части
+	} // Целая часть переведена в r-ичную СС, далее перевод дробной части
 	A[i++] = symbol(N2);
 	A[i] = '\0';
-	strrev(A);
+	_strrev(A);
 	if (N4 != 0)
 	{
 		i = 0;
@@ -79,6 +89,7 @@ char* of10inR(float N, int r)
 	return A;
 }
 
+
 int main()
 {
 	bool T = true;
@@ -86,7 +97,7 @@ int main()
 	int r, a, R1, R2;
 	float N, N1, N2;
 	char b;
-
+	
 	while (T)
 	{
 		cout << "\n 1. Перевод числа из одной системы счисления в другую систему счисления.\n";
@@ -108,7 +119,7 @@ int main()
 			if (R1 == 10)
 			{
 				cin >> N;
-				of10inR(N, R2);
+				// of10inR(N, R2);
 				cout << A << "\n";
 			}
 			else
@@ -258,5 +269,5 @@ int main()
 			T = false;
 		}
 	}
-}
 	
+}
