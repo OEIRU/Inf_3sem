@@ -1,7 +1,4 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <conio.h>
-#include <stdio.h>
-#include <math.h>
 #include <iostream>
 #include <locale.h>
 using namespace std;
@@ -9,18 +6,13 @@ using namespace std;
 #define n 20
 char A[n], B[n];
 
-
-
-
 int number(char a)
 {
-	if (a < 58)
+	if (a < 58)	
 		return a - '0';
 	else
 		return a - 'A' + 10;
 } // перевод символа в число
-
-
 
 char symbol(int a) 
 {
@@ -29,8 +21,6 @@ char symbol(int a)
 	else
 		return a + 55;
 } // если символ - буква (10+ система счисления)
-
-
 
 float ofRin10(char A[n], int r)  // перевод из r-ичной в 10-ную
 {
@@ -46,14 +36,12 @@ float ofRin10(char A[n], int r)  // перевод из r-ичной в 10-ну�
 	for (int i = k - 1; i >= 0; i--) // посчитали целую часть
 		N += (number(A[j++])) * powf(r, i);
 
-	k = -1;
+	k = -1; 
 
-	while (A[++j] != '\0')
+	while (A[j++] != '\0')
 		N += (number(A[j])) * powf(r, k--);
 	return N;
 }
-
-
 
 char* of10inR(float N, int r)
 {
@@ -89,7 +77,6 @@ char* of10inR(float N, int r)
 	return A;
 }
 
-
 int main()
 {
 	bool T = true;
@@ -119,7 +106,7 @@ int main()
 			if (R1 == 10)
 			{
 				cin >> N;
-				// of10inR(N, R2);
+				of10inR(N, R2);
 				cout << A << "\n";
 			}
 			else
